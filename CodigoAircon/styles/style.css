@@ -1,0 +1,12 @@
+@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&family=Lato:wght@300;400;700&display=swap');
+:root{
+    /*MAIN COLORS*/
+    --strong-green: #00B906;
+    --light-green: #B9E937;
+    --dark-gray: #424242;
+    --light-gray: #F5F5F5;
+    --green-gray: #406661;
+    --dark-green: #17706E;
+    --black: #000000;
+    --white: #FFFFFF;
+}
