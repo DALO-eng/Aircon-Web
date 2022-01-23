@@ -1,9 +1,10 @@
 $(document).ready(function(){
+    //NAVBAR CODE
     function setNavbar(){
-        if(window.innerWidth > 822){
+        if(window.innerWidth > 840){
             $(".navbar-options").css("display","flex");
         }
-        else if (window.innerWidth < 822) {
+        else if (window.innerWidth < 840) {
             $(".navbar-options").css("display","none");
         }
     }
@@ -14,3 +15,4 @@ $(document).ready(function(){
 
     window.addEventListener("resize", setNavbar);
 });
+

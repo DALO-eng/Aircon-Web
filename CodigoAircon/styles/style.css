@@ -15,6 +15,8 @@
     font-size: 16px;
 }
 *{
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 body{
@@ -25,7 +27,6 @@ body{
     background-color: var(--strong-green);
     display: flex;
     justify-content: space-between;
-    position: fixed;
     width: 100%;
     padding: 0 10%;
 }
@@ -57,6 +58,120 @@ body{
     animation-duration: 0.2s;
     border-color: var(--light-green);
 }
+
+.hero{
+    background: url("https://drive.google.com/uc?id=1m6cgWaTZ2OGWonJXHFVMLffLqJuhwRT2") no-repeat top center;
+    background-size: cover;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.hero-title{
+    font-family: 'Comfortaa', cursive;
+    color: var(--strong-green);
+    -webkit-text-stroke: 2px var(--black);
+    font-weight: 700;
+    font-size: 5vw;
+    position: absolute;
+    top: 4rem;
+}
+.main-form{
+    background-color: transparent;
+    padding: 0;
+    width: 60%;
+}
+.nav-item{
+    width: 12rem;
+    background-color:var(--dark-gray);
+    margin-right: .4rem;
+    text-align: center;
+}
+.nav-link{
+    color: var(--light-gray);
+}
+.nav-link{
+    border: none;
+}
+.nav-link.active{
+    background-color: var(--light-gray) !important;
+    color: var(--strong-green) !important;
+    font-weight: 700;
+    border: none;
+    border-radius: 0;
+    height: 100%;
+}
+.tab-content{
+    background-color: var(--light-gray);
+    border-radius: 0px 1rem 1rem 1rem;
+}
+
+.booking-form{
+    display: flex;
+    flex-direction: column;
+}
+.type-of-flight{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.type-of-flight label{
+    font-weight: 700;
+}
+.type-of-flight input[type="radio"]{
+    width: 1.2rem;
+    height: 1.2rem;
+    margin-right:.2rem;
+    margin-left: 1.5rem;
+}
+
+.main-info{
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: 1.5rem;
+    margin-bottom: 1.5rem;
+}
+.main-info-element{
+    margin-right: 4rem;
+}
+.main-info-element label{
+    font-size: 2rem;
+    font-weight: 500;
+}
+.main-info-element select{
+    width: 15rem;
+    background-color: var(--light-gray);
+}
+
+.sub-info{
+    display: flex;
+    align-items: center;
+    margin-left: 1.5rem;
+    margin-right: 3rem;
+    margin-bottom: 2rem;
+    justify-content: space-between;
+}
+.sub-info .amount{
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.sub-info .amount select{
+    width: 4rem;
+}
+.sub-info .promo-code{
+    text-decoration: none;
+    color: var(--light-green);
+    font-weight: 700;
+}
+.primary-button{
+    background-color: var(--light-green);
+    font-weight: 700;
+    padding: .2rem 2.5rem;
+    border: none;
+    border-radius: 1rem;
+}
 @keyframes navbar-selection{
     from{border-color: var(--strong-green);}
     to{border-color: var(--light-green);}
@@ -67,7 +182,7 @@ body{
         padding:0 1%;
     }
 }
-@media (max-width:822px){
+@media (max-width:840px){
     .navbar{
         padding:0;
     }
