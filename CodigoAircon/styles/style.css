@@ -81,7 +81,10 @@ body{
 .main-form{
     background-color: transparent;
     padding: 0;
-    width: 60%;
+    min-width: 60% !important;
+}
+.nav-tabs{
+    border: none;
 }
 .nav-item{
     width: 12rem;
@@ -91,8 +94,6 @@ body{
 }
 .nav-link{
     color: var(--light-gray);
-}
-.nav-link{
     border: none;
 }
 .nav-link.active{
@@ -106,8 +107,11 @@ body{
 .tab-content{
     background-color: var(--light-gray);
     border-radius: 0px 1rem 1rem 1rem;
+    border: none;
 }
-
+.tab-pane{
+    padding: 0;
+}
 .booking-form{
     display: flex;
     flex-direction: column;
@@ -128,26 +132,23 @@ body{
 }
 
 .main-info{
-    display: flex;
-    flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: auto auto;
     margin-left: 1.5rem;
     margin-bottom: 1.5rem;
-}
-.main-info-element{
-    margin-right: 4rem;
 }
 .main-info-element label{
     font-size: 2rem;
     font-weight: 500;
 }
 .main-info-element select{
-    width: 15rem;
+    width: 12rem;
     background-color: var(--light-gray);
 }
 
 .sub-info{
-    display: flex;
-    align-items: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto auto;
     margin-left: 1.5rem;
     margin-right: 3rem;
     margin-bottom: 2rem;
@@ -177,11 +178,25 @@ body{
     to{border-color: var(--light-green);}
 }
 
+
+
+
 @media (max-width:1024px){
     .navbar{
         padding:0 1%;
     }
 }
+
+@media (max-width:992px){
+    .nav-item{
+        width: 50%;
+        margin: 0;
+    }
+    .tab-content{
+        border-radius: 0 0 1rem 1rem;
+    }
+}
+
 @media (max-width:840px){
     .navbar{
         padding:0;
@@ -222,4 +237,31 @@ body{
         from{background-color: var(--strong-green);}
         to{background-color: var(--light-green);}
     }
+}
+
+@media(max-width:600px){
+    .main-info{
+        grid-template-columns: auto;
+    }
+    .main-info-element label{
+    font-size: 1.5rem;
+    font-weight: 500;
+}
+    .sub-info{
+        grid-template-columns: auto auto auto;
+    }
+    .amount{
+        padding: 0 5%;
+        margin-bottom: 10%;
+    }
+    .promo-code{
+        grid-column: 1/4;
+        text-align: center;
+        margin-bottom: .5rem;
+    }
+    .sub-info .primary-button{
+        grid-column: 1/4;
+        margin-bottom: .5rem;
+    }
+    
 }

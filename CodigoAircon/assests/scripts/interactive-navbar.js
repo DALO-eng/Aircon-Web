@@ -4,7 +4,7 @@ $(document).ready(function(){
         if(window.innerWidth > 840){
             $(".navbar-options").css("display","flex");
         }
-        else if (window.innerWidth < 840) {
+        else if (window.innerWidth <= 840) {
             $(".navbar-options").css("display","none");
         }
     }
