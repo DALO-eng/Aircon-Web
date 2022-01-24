@@ -30,6 +30,9 @@ body{
     width: 100%;
     padding: 0 10%;
 }
+.logo-mobile{
+    display: none;
+}
 .bars{
     display: none;
 }
@@ -317,6 +320,14 @@ body{
 }
 
 @media(max-width:600px){
+    .logo-desktop{
+        display: none;
+    }
+    .logo-mobile{
+        display: inline;
+        width: 4rem;
+        margin: .5rem;
+    }
     .main-info{
         grid-template-columns: auto;
     }
