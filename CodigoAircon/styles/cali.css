@@ -1,4 +1,4 @@
-
+/* Se muestran los estilos de la pagina calificanos */
 *{
     font-family: 'Quicksad',sans-serif;
 }
@@ -19,7 +19,8 @@ background-color: #00b906;
     border: none;
     color: darkgray;
 } 
-
+/* En esta seccion estan los estilos de las formas correctas
+e incorrectas del formulario */
 .form-control.error input {
 	border-color: #e74c3c;
 }
@@ -47,4 +48,7 @@ background-color: #00b906;
 
 .form-control.error small {
 	visibility: visible;
+}
+.vol{
+    border-color: solid, #00b906;
 }
