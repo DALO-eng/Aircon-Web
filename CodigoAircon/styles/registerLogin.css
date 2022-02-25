@@ -56,6 +56,9 @@ body{
     background-color: var(--light-gray);
     font-size: 1rem;
 }
+#phone{
+    width: 100% !important;
+}
 .birth-gender{
     display: grid;
     grid-template-columns: auto auto;

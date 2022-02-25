@@ -27,20 +27,48 @@
     if(!mysqli_query($conn,$sql)){
         die(mysqli_error($conn));
     }
-
-    if($password === $confirmPassword){
-        $myPassword = password_hash($password,PASSWORD_DEFAULT);
-        $myPassword = substr($myPassword, 0,30);
-        $sqlInsert = "INSERT INTO user(name,lastname,email,password,country,phone,birth,gender)
-        VALUES ('$name','$lastname','$email','$myPassword','$country','$phone','$birth','$gender')";
-        if(mysqli_query($conn,$sqlInsert)){
-            echo 'Usuario ingresado';
+    $errorSintax = '';
+    if(!preg_match("/^[a-zA-Z-' ]*$/",$name) || !preg_match("/^[a-zA-Z-' ]*$/",$lastname)){
+        $errorSintax = "Solo se permiten letras y espacios en el nombre";
+    }
+    elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)){
+         $errorSintax = "Correo inválido";
+    }
+    elseif(strlen($password) < 8){
+        $errorSintax = "Contraseña debe ser mayor a 8 caracteres";
+    }
+    elseif(!ctype_digit(substr($phone,1))){
+        $errorSintax = "Solo se aceptan numeros en el telefono";
+    }
+    elseif(time() < strtotime('+18 years', strtotime($birth))){
+        $errorSintax = "El usuario debe ser mayor de edad";
+    }
+    
+    if($errorSintax === ''){
+        $checkEmail = "SELECT * FROM user WHERE email = '$email'";
+        $checkEmailQuery = mysqli_query($conn,$checkEmail);
+        if(mysqli_num_rows($checkEmailQuery) > 0){
+            echo "Este correo ya fue registrado :(";
         }
         else{
-            die(mysqli_error($conn));
+            if($password === $confirmPassword){
+                $myPassword = password_hash($password,PASSWORD_DEFAULT);
+                $myPassword = substr($myPassword, 0,30);
+                $sqlInsert = "INSERT INTO user(name,lastname,email,password,country,phone,birth,gender)
+                VALUES ('$name','$lastname','$email','$myPassword','$country','$phone','$birth','$gender')";
+                if(mysqli_query($conn,$sqlInsert)){
+                    echo 'Usuario ingresado';
+                }
+                else{
+                    die(mysqli_error($conn));
+                }
+            }
+            else{
+                die("No coinciden las contraseñas");
+            }
         }
     }
     else{
-        die("No coinciden las contraseñas");
+        die($errorSintax);
     }
 ?>
