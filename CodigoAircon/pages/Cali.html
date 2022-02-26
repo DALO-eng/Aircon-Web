@@ -36,7 +36,7 @@
                 </div>
             </div>
             <div class="card-body">
-                <form id="formulario1" method="POST" name="Formulario1">
+                <form id="formulario1" action="../assests/php/AdCali.php" method="POST" name="Formulario1">
 
                     <div class="form-control">
                         <label for="correo">Correo</label><br>
@@ -74,7 +74,7 @@
                         </div>
 
                     </div> <br>
-                    <button type="submit" class="btn btn-primary" id="enviar"  disabled>Calificar</button>
+                    <button type="submit" name="calificar" class="btn btn-primary" id="enviar"  disabled>Calificar</button>
                     <a href="../../index.html" class="btn btn-danger">Volver</a>
                 </form>
             </div>
@@ -105,29 +105,28 @@
             $('#availabilty').html('<span class="text-danger"> <i class="fas fa-exclamation-circle"></i> El correo no es valido </span>');
             $('#vuelo').attr('disabled', true)
 
-        } else {
+       } /*else {
             $('#availabilty').html('<span class="text-success"><i class="fas fa-check-circle"></i> El correo no es valido </span>');
             $('#vuelo').attr('disabled', false)
-        } /* else {
+        }  */else {
             $.ajax({
-                url: 'ajax_incluir.php',
+                url: '../assests/php/CaliVerif.php',
                 method: "POST",
-                data: { mail: correo },
+                data: { mail : correo },
                 success: function (result) {
-                    // console.log(result) 
+                    console.log(result) 
                     if (result == 0) {
                         $('#availabilty').html('<span class="text-danger"> El correo no existe </span>');
-
+                        $('#vuelo').attr('disabled', true)
 
                     }
                     else {
-                        $('#availabilty').html('<span class="text-success"> El correo ya existe </span>');
-
-
+                        $('#availabilty').html('<span class="text-success"> El correo Está correcto </span>');
+                        $('#vuelo').attr('disabled', false)
                     }
                 }
             })
-        } */
+        }
     }
     function vul() {
         var vuelo = $(this).val();
