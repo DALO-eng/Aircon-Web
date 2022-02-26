@@ -52,8 +52,12 @@
         }
         else{
             if($password === $confirmPassword){
-                $myPassword = password_hash($password,PASSWORD_DEFAULT);
-                $myPassword = substr($myPassword, 0,30);
+                $myPassword = $password;
+                $cripto = array('sha256','md5','haval160,4');
+                foreach($cripto as $value){
+                    $myPassword = hash($value,$myPassword);
+                }
+                $myPassword = substr($myPassword, 0,20);
                 $sqlInsert = "INSERT INTO user(name,lastname,email,password,country,phone,birth,gender)
                 VALUES ('$name','$lastname','$email','$myPassword','$country','$phone','$birth','$gender')";
                 if(mysqli_query($conn,$sqlInsert)){
