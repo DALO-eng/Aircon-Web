@@ -1,13 +1,12 @@
 const formulario = document.getElementById('formulario1')
 const inputs =document.querySelectorAll('#formulario1 input')
-const usuario = document.getElementById('usuario')
 const vuelo = document.getElementById('vuelo')
 const correo = document.getElementById('correo')
 var califiVal = document.getElementById('califi').value = 0
 
 formulario.addEventListener('submit', (e) => {
     //previene los valores en blanco
-    e.preventDefault()
+    
     mensage()
     
 }) 
@@ -18,17 +17,10 @@ inputs.forEach(input => {
 });
 function checkInputs(){
     // esta funcion verifica los inputs
-    const userVal = usuario.value.trim()
     const emailVal = correo.value.trim()
     const vueloVal = vuelo.value.trim()
 
-    if(userVal == ''){
-        setErrorPor(usuario, 'No puede dejar el usuario en blanco')
-    } else if(!isuser(userVal)) {
-        setErrorPor(usuario, 'El usuario solo puede incluir letras y/o nuemeros, entre 4 y 16 caracteres')
-    }else{
-        setSuccesspor(usuario)
-    }
+
 
     if(emailVal == ''){
         setErrorPor(correo, 'No puede dejar este expacio en blanco')
