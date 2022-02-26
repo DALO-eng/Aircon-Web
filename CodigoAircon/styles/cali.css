@@ -34,17 +34,17 @@ e incorrectas del formulario */
 	visibility: hidden;
 }
 
-.form-control.success i.fa-check-circle {
+i.fa-check-circle {
 	color: #2ecc71;
 	visibility: visible;
 }
 
-.form-control.error i.fa-exclamation-circle {
+i.fa-exclamation-circle {
 	color: #e74c3c;
 	visibility: visible;
 }
 
-.form-control small {
+/* .form-control small {
 	color: #e74c3c;
 	bottom: 0;
 	left: 0;
@@ -53,4 +53,4 @@ e incorrectas del formulario */
 
 .form-control.error small {
 	visibility: visible;
-}
+} */
