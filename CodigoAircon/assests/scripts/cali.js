@@ -1,13 +1,4 @@
-const formulario = document.getElementById('formulario1')
-const vuelo = document.getElementById('vuelo')
-const correo = document.getElementById('correo')
-var califiVal = document.getElementById('califi').value = 0
-formulario.addEventListener('submit', (e) => {
-    //previene los valores en blanco
-    
-    mensage()
-    
-}) 
+
 function calificar(item){
 
     contador = item.id[0]//5estrella solo capturaria el primer digito
@@ -40,9 +31,7 @@ function calificar(item){
     }
 }
 
-function mensage(){
-    swal("Gracias por calificarnos " , " usted nos dio "+califiVal+" estrellas", 'success')
-}
+
 /* 
 const inputs =document.querySelectorAll('#formulario1 input')
 const vuelo = document.getElementById('vuelo')
