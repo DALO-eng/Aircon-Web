@@ -33,6 +33,8 @@ if(isset($_POST['calificar'])){
     $vuelo = $_POST['vuelo'];
     $cali = $_POST['califi'];
     
+
+    
     $sql = "CREATE TABLE IF NOT EXISTS califi(
         id INT(6) AUTO_INCREMENT PRIMARY KEY,
         vuelo VARCHAR(30) NOT NULL,
