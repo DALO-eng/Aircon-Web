@@ -1,4 +1,5 @@
 <?php
+
 include('connect.php');
 
 echo '<!DOCTYPE html>
@@ -32,29 +33,48 @@ if(isset($_POST['calificar'])){
     $correo = $_POST['correo'];
     $vuelo = $_POST['vuelo'];
     $cali = $_POST['califi'];
-    
+   
 
-    
+
+
+
+
     $sql = "CREATE TABLE IF NOT EXISTS califi(
         id INT(6) AUTO_INCREMENT PRIMARY KEY,
         vuelo VARCHAR(30) NOT NULL,
         email VARCHAR(50) NOT NULL,
         calificacion int not null,
-        fecha TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP
+        fecha DATE not null
         
     ) ENGINE = InnoDB";
     if(!mysqli_query($conn,$sql)){
         die(mysqli_error($conn));
     }
-
-    $sqlIn= "INSERT INTO califi(vuelo,email,calificacion)
-    VALUES ('$correo','$vuelo','$cali')";
+    $sql= "SELECT * FROM califi WHERE email ='$correo'";
+    $result = mysqli_query($conn, $sql);
+    $result = mysqli_num_rows($result);
+    echo '<script>console.log('.$result.')</script>';
+    if($result==0){
+        $fechaactual = date("Y-m-d");
+    $sqlIn= "INSERT INTO califi(email,vuelo,calificacion, fecha)
+    VALUES ('$correo','$vuelo','$cali','$fechaactual')";
     if(mysqli_query($conn,$sqlIn)){
         echo '<h3>Se ha Agregado su calificacion de '.$cali.' estrellas</h3>';
     }
     else{
         die(mysqli_error($conn));
     }
+}else{
+    $fechaactual = date("Y-m-d");
+    $sqlIn="UPDATE califi SET calificacion='$cali' WHERE email='$correo'";
+    $sql2= "UPDATE califi SET fecha='$fechaactual' WHERE email='$correo'";
+    if(mysqli_query($conn,$sqlIn) && mysqli_query($conn,$sql2)){
+        echo '<h3>Se ha actualizado su calificacion de '.$cali.' estrellas</h3>';
+    }
+    else{
+        die(mysqli_error($conn));
+    }
+}
 }
 echo '</body>'
 ?>
