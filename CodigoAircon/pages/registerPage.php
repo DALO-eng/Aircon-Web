@@ -12,11 +12,21 @@
     <title>Registrate | Aircon</title>
 </head>
 <body>
+    <?php
+        session_start();
+        if(isset($_SESSION['alert'])){
+            $myError = $_SESSION['alert'];
+            session_destroy();
+        }
+        else{
+            $myError = "";
+        }
+    ?>
     <main class="container">
         <img src="https://drive.google.com/uc?id=141ILhH9N3xMNjuAF99kE5zmWdIWCKrGc" alt="aircon-logo-mobile" class="logo-mobile">
         <img src="https://drive.google.com/uc?id=1lhOMQhpKRsGt7GNtbPBS9iV1bNS9T5Hs" alt="aircon-logo-desktop" class="logo-desktop">
         <h2 class="title">Regístrate</h2>
-        <form action="../assests/php/register.php" method="post">
+        <form action="../assets/php/register.php" method="post">
             <input type="text" placeholder="Nombre" name="name" required>
             <input type="text" placeholder="Apellido" name="lastname" required>
             <input type="email" placeholder="Correo electrónico" name="email" required>
@@ -33,8 +43,10 @@
                         <option value="O">Otro</option>
                 </select>
             </div>
+            <p class="error"><?php echo $myError;?></p>
             <input type="submit" value="Registrarse" class="primary-button" onclick="getPhone()">
         </form>
+        <p>Ya tienes una cuenta? <a href="./loginPage.php">Ingresa!</a></p>
     </main>
 </body>
 <script src="../assests/scripts/telInput.js"></script>

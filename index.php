@@ -37,7 +37,7 @@
                             <li><a href="#">Mis Viajes</a></li>
                             <li><a href="./CodigoAircon/pages/Cali.html" >Encuestas</a></li>
                             <li><a href="#">Ayuda</a></li>
-                            <li><a href="#">Iniciar Sesión</a></li>
+                            <li><a href="./CodigoAircon/pages/loginPage.php">Iniciar Sesión</a></li>
                         </ul>
                 </nav>
             </head>

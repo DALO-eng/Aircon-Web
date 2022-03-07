@@ -19,10 +19,13 @@
 
     if(mysqli_num_rows($userquery) > 0){
         session_start();
-        $_SESSION['userId'] = $myInfo;
-        echo 'Bienvenido ' . $_SESSION['userId']['name'];
+        $_SESSION['user'] = $myInfo;
+        $_SESSION['time'] = time();
+        header("Location: ../../../index.php");
     }
     else{
-        echo "Usuario / Contraseña incorrectas";
+        session_start();
+        $_SESSION['alert'] = "Usuario / Contraseña incorrectas!";
+        header("Location: ../../pages/loginPage.php");
     }
 ?>

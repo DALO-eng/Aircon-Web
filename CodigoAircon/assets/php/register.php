@@ -48,7 +48,10 @@
         $checkEmail = "SELECT * FROM user WHERE email = '$email'";
         $checkEmailQuery = mysqli_query($conn,$checkEmail);
         if(mysqli_num_rows($checkEmailQuery) > 0){
-            echo "Este correo ya fue registrado :(";
+            $errorSintax = "Este correo ya fue registrado :(";
+            session_start();
+            $_SESSION['alert'] = $errorSintax;
+            header("Location: ../../pages/registerPage.php");
         }
         else{
             if($password === $confirmPassword){
@@ -61,18 +64,25 @@
                 $sqlInsert = "INSERT INTO user(name,lastname,email,password,country,phone,birth,gender)
                 VALUES ('$name','$lastname','$email','$myPassword','$country','$phone','$birth','$gender')";
                 if(mysqli_query($conn,$sqlInsert)){
-                    echo 'Usuario ingresado';
+                    session_start();
+                    $_SESSION['alert'] = 'El usuario fue registrado correctamente!';
+                    header("Location: ../../pages/registerPage.php");
                 }
                 else{
                     die(mysqli_error($conn));
                 }
             }
             else{
-                die("No coinciden las contraseñas");
+                $errorSintax = "No coinciden las contraseñas";
+                session_start();
+                $_SESSION['alert'] = $errorSintax;
+                header("Location: ../../pages/registerPage.php");
             }
         }
     }
     else{
-        die($errorSintax);
+        session_start();
+        $_SESSION['alert'] = $errorSintax;
+        header("Location: ../../pages/registerPage.php");
     }
 ?>
