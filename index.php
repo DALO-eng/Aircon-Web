@@ -81,7 +81,7 @@
                         </div>
                         <div class="user-links">
                             <a href="#" id="close">Cerrar</a>
-                            <a href="#">Cambiar Contraseña</a>
+                            <a href="./CodigoAircon/pages/changePasswordPage.php">Cambiar Contraseña</a>
                             <a href="./CodigoAircon/pages/logout.php">Cerrar Sesión</a>
                         </div>
                     </div>
