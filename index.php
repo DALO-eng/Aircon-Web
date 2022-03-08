@@ -9,7 +9,8 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <link rel="stylesheet" href="./CodigoAircon/styles/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="./CodigoAircon/styles/style.css?v=<?php echo time(); ?>">
     <link rel="shortcut icon" href="https://drive.google.com/uc?id=1VOhsU-9rzNeTUiiOLaCCf9GIX1Hvge7B" type="image/x-icon">
     <script src="https://kit.fontawesome.com/be539b68f8.js" crossorigin="anonymous"></script>
     <link href="https://fonts.googleapis.com/css2?family=Belleza&display=swap" rel="stylesheet">
@@ -22,9 +23,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     
     <script src="./CodigoAircon/assests/scripts/interactive-navbar.js"></script>
-    <script src="/CodigoAircon/assests/scripts/validate-alert.js"></script>
     <script src="https://kit.fontawesome.com/be539b68f8.js" crossorigin="anonymous"></script>
-    <script src="../Aircon-Web-master/CodigoAircon/assests/scripts/validate-alert.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./CodigoAircon/assests/scripts/validate-alert.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <!-- Title page -->
@@ -43,10 +44,14 @@
             else{
                 $_SESSION['time'] = time();
                 $mainValue = $_SESSION['user']['name'] . " " . $_SESSION['user']['lastname'];
+                $direction = "#";
+                $myId = "open";
             }
         }
         else{
             $mainValue = "Iniciar Sesión";
+            $direction = './CodigoAircon/pages/loginPage.php';
+            $myId = "";
         }
     ?>
     <main>
@@ -59,11 +64,28 @@
                         <ul class="navbar-options">
                             <li><a href="CodigoAircon/pages/vuelos.php">Oferta de vuelos</a></li>
                             <li><a href="#">Mis Viajes</a></li>
-                            <li><a href="./CodigoAircon/pages/Cali.php">Encuestas</a></li>
-                            <li><a href="#main-footer">Contactanos</a></li>
-                            <li><a href="./CodigoAircon/pages/loginPage.php"><?php echo $mainValue;?></a></li>
+                            <li><a href="./CodigoAircon/pages/Cali.html" >Encuestas</a></li>
+                            <li><a href="#">Ayuda</a></li>
+                            <li><a id="<?php echo $myId;?>" href=<?php echo $direction;?>><?php echo $mainValue;?></a></li>
                         </ul>
                 </nav>
+                <div class="popout-container" id="container">
+                    <div class="popout">
+                        <div class="user-info">
+                            <h1>Usuario</h1>
+                            <p><?php echo "Nombre: " . $_SESSION['user']['name'] . " " . $_SESSION['user']['lastname'];?></p>
+                            <p><?php echo "Correo: " . $_SESSION['user']['email'];?></p>
+                            <p><?php echo "País: " . $_SESSION['user']['country'];?></p>
+                            <p><?php echo "Teléfono: " . $_SESSION['user']['phone'];?></p>
+                            <p><?php echo "Fecha nacimiento: " . $_SESSION['user']['birth'];?></p>
+                        </div>
+                        <div class="user-links">
+                            <a href="#" id="close">Cerrar</a>
+                            <a href="#">Cambiar Contraseña</a>
+                            <a href="./CodigoAircon/pages/logout.php">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </div>
             </head>
             <section class="hero">
                 <div class="hero-text--component">
@@ -197,5 +219,6 @@
             </div>
         </div>
     </div>
+    <script src="./CodigoAircon/assets/scripts/popoutLogic.js"></script>
 </body>
 </html>
