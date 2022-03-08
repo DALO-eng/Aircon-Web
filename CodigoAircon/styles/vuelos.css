@@ -24,7 +24,7 @@ body{
     padding: 0;
 }
 .navbar{
-    background-color: transparent;
+    background-color: var(--strong-green);
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -48,11 +48,12 @@ body{
     align-items: center;
 }
 .navbar-options li a {
-    color: var(--white);
+    color: var(--black);
     text-decoration: none;
     padding: .5rem;
     font-weight: 700;
     display: block;
+    border: 2px solid var(--strong-green);
     border-radius: .4rem;
 }
 .navbar-options li a:hover{
@@ -60,84 +61,25 @@ body{
     animation-duration: 0.2s;
     border-color: var(--light-green);
 }
-.popout-container{
-    display: none;
-    background-color: rgba(0,0,0,0.3);
-    align-items: center;
-    justify-content: center;
-    position: fixed;
-    top: 0;
-    left: 0;
-    height: 100vh;
-    width: 100vw;
-    z-index: 2;
-}
-.show{
-    display: flex;
-}
-.popout{
-    background-color: var(--light-green);
-    width: 30rem;
-    padding: 2rem;
-    border-radius: 1rem;
-    text-align: center;
-    box-shadow: 0 2px 4px rgba(0,0,0, .2);
-}
-.user-info{
-    font-weight: bold;
-}
-.user-info h1{
-    color: var(--dark-gray);
-}
-.user-links{
-    display: grid;
-    grid-template-columns: auto auto auto;
-}
-.user-links a{
-    text-decoration: none;
-    color: var(--dark-green);
-    cursor: pointer;
-    font-weight: bold;
-}
-.user-links a:hover{
-    color: var(--strong-green);
-}
-/* Main-component section */
-
-#main-component {
-    background: url("../../datosAircon/main-bg.jpg") no-repeat top center;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 
 .hero{
+    background: url("../../datosAircon/1557397222505.jfif") no-repeat top center;
     background-size: cover;
-    height: 90vh;
+    height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
 }
-
-.hero-text--component {
-    position: relative;
-    right: 10%;
-    top: -10%;
-}
-
 .hero-title{
-    color: white;
-    font-family: 'Belleza', sans-serif;
-    font-size: 10rem;
-}
-
-.hero-subtitle {
-    color: white;
-    font-family: 'Belleza', sans-serif;
-    font-size: 3rem;
+    font-family: 'Comfortaa', cursive;
+    color: var(--strong-green);
+    -webkit-text-stroke: 2px var(--black);
+    font-weight: 700;
+    font-size: 5.5rem;
+    position: absolute;
+    top: 4rem;
 }
 
 .slide-container {
@@ -190,11 +132,6 @@ p {
     border: none;
     border-radius: 0;
     height: 100%;
-}
-
-.logo-desktop {
-    margin: 3%;
-    width: 10%;
 }
 
 .link {
@@ -306,7 +243,7 @@ p {
     width: 100%;
 }
 
-#main-footer{
+.main-footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -447,22 +384,6 @@ p {
     place-items: center;
 }
 
-/* Testimonials section */
-
-#testimonials {
-    margin: 3% 5%;
-}
-
-.card-img-top {
-    width: 100%;
-    height: 15rem;
-    border-radius: 10%;
-}
-
-.card {
-    margin: 0 5%;
-}
-
 /* EXTRAS SECTION */
 
 .extras {
@@ -483,6 +404,9 @@ p {
 @media (max-width:1024px){
     .navbar{
         padding:0 1%;
+    }
+    .hero-title{
+        font-size: 3.4rem;
     }
 }
 
@@ -527,25 +451,6 @@ p {
         text-decoration: none;
         margin-right: 1rem;
     }
-
-    .hero-text--component {
-        position: initial;
-        margin: 0 auto;
-        text-align: center;
-    }
-
-    .hero-title {
-        font-size: 5rem;
-
-        transition: all .2s ease;
-    }
-
-    .hero-subtitle {
-        font-size: 2rem;
-        transition: all .2s ease;
-    }
-
-
     .bars i{
         font-size: 3rem;
         color: var(--black);
@@ -595,8 +500,11 @@ p {
     }
     .logo-mobile{
         display: inline;
-        width: 10%;
-        margin: 3%;
+        width: 4rem;
+        margin: .5rem;
+    }
+    .hero-title{
+        font-size: 1.8rem;
     }
     .main-info{
         grid-template-columns: auto;
@@ -608,19 +516,6 @@ p {
     .sub-info{
         grid-template-columns: auto auto auto;
     }
-
-    .city-text {
-        font-size: 100%;
-
-        transition: all .4s ease;
-    }
-
-    .reserv-btn {
-        font-size: 50%;
-        text-align: center;
-        width: 80%;
-    }
-
     .amount{
         padding: 0 5%;
         margin-bottom: 10%;
