@@ -64,7 +64,7 @@
                         <ul class="navbar-options">
                             <li><a href="CodigoAircon/pages/vuelos.php">Oferta de vuelos</a></li>
                             <li><a href="#">Mis Viajes</a></li>
-                            <li><a href="./CodigoAircon/pages/Cali.html" >Encuestas</a></li>
+                            <li><a href="./CodigoAircon/pages/Cali.php" >Encuestas</a></li>
                             <li><a href="#">Ayuda</a></li>
                             <li><a id="<?php echo $myId;?>" href=<?php echo $direction;?>><?php echo $mainValue;?></a></li>
                         </ul>
