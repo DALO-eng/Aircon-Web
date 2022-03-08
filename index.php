@@ -25,6 +25,22 @@
     <title>Aircon | Vuelos de calidad al mejor precio</title>
 </head>
 <body>
+    <?php
+        session_start();
+        if(isset($_SESSION['user'])){
+            if((time() - $_SESSION['time'] > 900)){
+                header("Location: ./logout.php");
+                exit;
+            }
+            else{
+                $_SESSION['time'] = time();
+                $mainValue = $_SESSION['user']['name'] . " " . $_SESSION['user']['lastname'];
+            }
+        }
+        else{
+            $mainValue = "Iniciar Sesión";
+        }
+    ?>
     <main>
         <section id="main-component">
             <head>
@@ -37,7 +53,7 @@
                             <li><a href="#">Mis Viajes</a></li>
                             <li><a href="./CodigoAircon/pages/Cali.html" >Encuestas</a></li>
                             <li><a href="#">Ayuda</a></li>
-                            <li><a href="./CodigoAircon/pages/loginPage.php">Iniciar Sesión</a></li>
+                            <li><a href="./CodigoAircon/pages/loginPage.php"><?php echo $mainValue;?></a></li>
                         </ul>
                 </nav>
             </head>
