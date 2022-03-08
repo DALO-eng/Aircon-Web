@@ -309,6 +309,15 @@
           hideMarkers();
           markers = [];
         }
+
+        $(document).ready(function () {
+            createCookie("ruta", markers);
+        });
+   
+        // Function to create the cookie
+        function createCookie(nombre, markers) {
+         return markers;
+        }
     </script>
     <script id="locator-result-items-tmpl" type="text/x-handlebars-template">
       {{#each locations}}
@@ -321,64 +330,6 @@
       {{/each}}
     </script>
   </head>
-
-  <?php
-        session_start();
-        if(isset($_SESSION['user'])){
-            if((time() - $_SESSION['time'] > 900)){
-                header("Location: ./logout.php");
-                exit;
-            }
-            else{
-                $_SESSION['time'] = time();
-                $mainValue = $_SESSION['user']['name'] . " " . $_SESSION['user']['lastname'];
-                $direction = "#";
-                $myId = "open";
-            }
-        }
-
-        if (markers != []) {
-            $serverName = 'localhost';
-            $userName = 'root';
-            $password = '';    
-            $dbName = 'aircon';
-        
-            $conn = mysqli_connect($serverName,$userName,$password);
-            if (!$conn) {
-                die("Connection failed: " . mysqli_connect_error());
-            }
-        
-            $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
-            if (!mysqli_query($conn,$sql)){
-                echo "Error creating database: " . mysqli_error($conn);
-            }
-            $conn = mysqli_connect($serverName,$userName,$password, $dbName);
-
-            $sql = "CREATE TABLE misVuelos (
-                id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-                usuario VARCHAR(30) NOT NULL,
-                origen VARCHAR(30) NOT NULL,
-                destino VARCHAR(50)
-                )";
-                
-                if ($conn->query($sql) === TRUE) {
-                  echo "Table misVuelos created successfully";
-                } else {
-                  echo "Error creating table: " . $conn->error;
-                }
-
-            $sql = "INSERT INTO misViajes (usuario, origen, destino)
-            VALUES ($_SESSION['user'], marker[0], marker[1])";
-            
-            if ($conn->query($sql) === TRUE) {
-              echo "New record created successfully";
-            } else {
-              echo "Error: " . $sql . "<br>" . $conn->error;
-            }            
-        }
-    ?>
-
-  
   <body>
     <div id="map-container">
         <div id="floating-panel">

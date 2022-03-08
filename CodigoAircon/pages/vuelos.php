@@ -30,9 +30,67 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
     <script src="../assets/scripts/googleMaps.js"></script>
+    <script src="../assets/scripts/reserva.js"></script>
 
 </head>
 <body>
+
+    <?php
+        session_start();
+        if(isset($_SESSION['user'])){
+            if((time() - $_SESSION['time'] > 900)){
+                header("Location: ./logout.php");
+                exit;
+            }
+            else{
+                $_SESSION['time'] = time();
+                $mainValue = $_SESSION['user']['name'] . " " . $_SESSION['user']['lastname'];
+                $direction = "#";
+                $myId = "open";
+            }
+        }
+
+    //     if (marker != []) {
+    //         $serverName = 'localhost';
+    //         $userName = 'root';
+    //         $password = '';    
+    //         $dbName = 'aircon';
+        
+    //         $conn = mysqli_connect($serverName,$userName,$password);
+    //         if (!$conn) {
+    //             die("Connection failed: " . mysqli_connect_error());
+    //         }
+        
+    //         $sql = "CREATE DATABASE IF NOT EXISTS $dbName";
+    //         if (!mysqli_query($conn,$sql)){
+    //             echo "Error creating database: " . mysqli_error($conn);
+    //         }
+    //         $conn = mysqli_connect($serverName,$userName,$password, $dbName);
+
+    //         $sql = "CREATE TABLE misVuelos (
+    //             id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    //             usuario VARCHAR(30) NOT NULL,
+    //             origen VARCHAR(30) NOT NULL,
+    //             destino VARCHAR(50)
+    //             )";
+                
+    //             if ($conn->query($sql) === TRUE) {
+    //               echo "Table misVuelos created successfully";
+    //             } else {
+    //               echo "Error creating table: " . $conn->error;
+    //             }
+
+    //         $sql = "INSERT INTO misViajes (usuario, origen, destino)
+    //         VALUES ($mainValue, marker[0], marker[1])";
+            
+    //         if ($conn->query($sql) === TRUE) {
+    //           echo "New record created successfully";
+    //         } else {
+    //           echo "Error: " . $sql . "<br>" . $conn->error;
+    //         }            
+    //     }
+    // ?>
+
     <main>
         <section class="hero">
             <div class="main-form  mt-3">
@@ -117,7 +175,9 @@
                                 </select>
                             </div>
                             <a class="promo-code" href="#">Código promocional</a>
-                            <button class="primary-button">Buscar Vuelo</button>
+                            <button class="primary-button" onClick = "reservaExitosa()">
+                                <a href="../../index.php">Reserva vuelo</a>
+                            </button>
                         </div>
                       </form>
                     </div>
