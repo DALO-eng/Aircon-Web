@@ -50,7 +50,7 @@ if(isset($_POST['calificar'])){
     if(!mysqli_query($conn,$sql)){
         die(mysqli_error($conn));
     }
-    $sql= "SELECT * FROM califi WHERE email ='$correo'";
+    $sql= "SELECT * FROM califi WHERE  vuelo ='$vuelo'";
     $result = mysqli_query($conn, $sql);
     $result = mysqli_num_rows($result);
     echo '<script>console.log('.$result.')</script>';
