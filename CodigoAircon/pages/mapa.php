@@ -21,168 +21,10 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/handlebars/4.7.7/handlebars.min.js"></script>
+
+    <link rel="stylesheet" href="../styles/mapa.css">
+
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
-    <style>
-      html,
-      body {
-        height: 100%;
-        margin: 0;
-        padding: 0;
-      }
-
-      #map-container {
-        width: 100%;
-        height: 100%;
-        position: relative;
-        font-family: "Roboto", sans-serif;
-        box-sizing: border-box;
-      }
-
-      #map-container button {
-        background: none;
-        color: inherit;
-        border: none;
-        padding: 0;
-        font: inherit;
-        font-size: inherit;
-        cursor: pointer;
-      }
-
-      #map {
-        position: absolute;
-        left: 22em;
-        top: 0;
-        right: 0;
-        bottom: 0;
-      }
-
-      #locations-panel {
-        position: absolute;
-        left: 0;
-        width: 22em;
-        top: 0;
-        bottom: 0;
-        overflow-y: auto;
-        background: white;
-        padding: 0.5em;
-        box-sizing: border-box;
-      }
-
-      @media only screen and (max-width: 876px) {
-        #map {
-          left: 0;
-          bottom: 50%;
-        }
-
-        #locations-panel {
-          top: 50%;
-          right: 0;
-          width: unset;
-        }
-      }
-
-      #locations-panel-list > header {
-        padding: 1.4em 1.4em 0 1.4em;
-      }
-
-      #locations-panel-list h1.search-title {
-        font-size: 1em;
-        font-weight: 500;
-        margin: 0;
-      }
-
-      #locations-panel-list h1.search-title > img {
-        vertical-align: bottom;
-        margin-top: -1em;
-      }
-
-      #locations-panel-list .search-input {
-        width: 100%;
-        margin-top: 0.8em;
-        position: relative;
-      }
-
-      #locations-panel-list .search-input input {
-        width: 100%;
-        border: 1px solid rgba(0, 0, 0, 0.2);
-        border-radius: 0.3em;
-        height: 2.2em;
-        box-sizing: border-box;
-        padding: 0 2.5em 0 1em;
-        font-size: 1em;
-      }
-
-      #locations-panel-list .search-input-overlay {
-        position: absolute;
-      }
-
-      #locations-panel-list .search-input-overlay.search {
-        right: 2px;
-        top: 2px;
-        bottom: 2px;
-        width: 2.4em;
-      }
-
-      #locations-panel-list .search-input-overlay.search button {
-        width: 100%;
-        height: 100%;
-        border-radius: 0.2em;
-        color: black;
-        background: transparent;
-      }
-
-      #locations-panel-list .search-input-overlay.search .icon {
-        margin-top: 0.05em;
-        vertical-align: top;
-      }
-
-      #locations-panel-list .section-name {
-        font-weight: 500;
-        font-size: 0.9em;
-        margin: 1.8em 0 1em 1.5em;
-      }
-
-      #locations-panel-list .location-result {
-        position: relative;
-        padding: 0.8em 3.5em 0.8em 1.4em;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.12);
-        cursor: pointer;
-      }
-
-      #locations-panel-list .location-result:first-of-type {
-        border-top: 1px solid rgba(0, 0, 0, 0.12);
-      }
-
-      #locations-panel-list .location-result:last-of-type {
-        border-bottom: none;
-      }
-
-      #locations-panel-list .location-result.selected {
-        outline: 2px solid #4285f4;
-      }
-
-      #locations-panel-list button.select-location {
-        margin-bottom: 0.6em;
-        text-align: left;
-      }
-
-      #locations-panel-list .location-result h2.name {
-        font-size: 1em;
-        font-weight: 500;
-        margin: 0;
-      }
-
-      #locations-panel-list .location-result .address {
-        font-size: 0.9em;
-        margin-bottom: 0.5em;
-      }
-
-      #location-results-list {
-        list-style-type: none;
-        margin: 0;
-        padding: 0;
-      }
-    </style>
     <script>
       'use strict';
 
@@ -404,18 +246,78 @@
       }
     </script>
     <script>
-      const CONFIGURATION = {
-        "locations": [
-          {"title":"El Dorado International Airport Luis Carlos Galán Sarmiento","address1":"Ac. 26 ##103-9","address2":"Fontibón, Bogotá, Colombia","coords":{"lat":4.701032949128339,"lng":-74.14604892023773},"placeId":"ChIJB4YPQ7acP44RMK8U71RZ6o4"}
-        ],
-        "mapOptions": {"center":{"lat":38.0,"lng":-100.0},"fullscreenControl":true,"mapTypeControl":false,"streetViewControl":false,"zoom":4,"zoomControl":true,"maxZoom":17},
-        "mapsApiKey": "AIzaSyCy6DBTzrvET6GkDxkVAevVRMU7BiX9ZDU",
-        "capabilities": {"input":true,"autocomplete":false,"directions":false,"distanceMatrix":false,"details":false}
-      };
+    
+      let map;
+      let markers = [];
+    
 
       function initMap() {
-        new LocatorPlus(CONFIGURATION);
+        const haightAshbury = { lat: 4.7010, lng: -74.1461 };
+
+        map = new google.maps.Map(document.getElementById("map"), {
+          zoom: 20,
+          center: haightAshbury,
+          mapTypeId: "terrain",
+        });
+        // This event listener will call addMarker() when the map is clicked.
+        map.addListener("click", (event) => {
+          addMarker(event.latLng);
+        });
+        // add event listeners for the buttons
+        document
+          .getElementById("show-markers")
+          .addEventListener("click", showMarkers);
+        document
+          .getElementById("hide-markers")
+          .addEventListener("click", hideMarkers);
+        document
+          .getElementById("delete-markers")
+          .addEventListener("click", deleteMarkers);
+        // Adds a marker at the center of the map.
+        addMarker(haightAshbury);
       }
+
+      // Adds a marker to the map and push to the array.
+        function addMarker(position) {
+          const marker = new google.maps.Marker({
+            position,
+            map,
+          });
+        
+          markers.push(marker);
+        }
+        
+        // Sets the map on all markers in the array.
+        function setMapOnAll(map) {
+          for (let i = 0; i < markers.length; i++) {
+            markers[i].setMap(map);
+          }
+        }
+        
+        // Removes the markers from the map, but keeps them in the array.
+        function hideMarkers() {
+          setMapOnAll(null);
+        }
+        
+        // Shows any markers currently in the array.
+        function showMarkers() {
+          setMapOnAll(map);
+        }
+        
+        // Deletes all markers in the array by removing references to them.
+        function deleteMarkers() {
+          hideMarkers();
+          markers = [];
+        }
+
+        $(document).ready(function () {
+            createCookie("ruta", markers);
+        });
+   
+        // Function to create the cookie
+        function createCookie(nombre, markers) {
+         return markers;
+        }
     </script>
     <script id="locator-result-items-tmpl" type="text/x-handlebars-template">
       {{#each locations}}
@@ -430,6 +332,11 @@
   </head>
   <body>
     <div id="map-container">
+        <div id="floating-panel">
+          <input id="hide-markers" type="button" value="Hide Markers" />
+          <input id="show-markers" type="button" value="Show Markers" />
+          <input id="delete-markers" type="button" value="Delete Markers" />
+        </div>
       <div id="locations-panel">
         <div id="locations-panel-list">
           <header>
