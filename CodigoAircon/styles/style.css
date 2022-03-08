@@ -24,7 +24,7 @@ body{
     padding: 0;
 }
 .navbar{
-    background-color: var(--strong-green);
+    background-color: transparent;
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -48,12 +48,11 @@ body{
     align-items: center;
 }
 .navbar-options li a {
-    color: var(--black);
+    color: var(--white);
     text-decoration: none;
     padding: .5rem;
     font-weight: 700;
     display: block;
-    border: 2px solid var(--strong-green);
     border-radius: .4rem;
 }
 .navbar-options li a:hover{
@@ -62,8 +61,17 @@ body{
     border-color: var(--light-green);
 }
 
+/* Main-component section */
+
+#main-component {
+    background: url("../../datosAircon/main-bg.jpg") no-repeat top center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
 .hero{
-    background: url("https://drive.google.com/uc?id=1m6cgWaTZ2OGWonJXHFVMLffLqJuhwRT2") no-repeat top center;
     background-size: cover;
     height: 90vh;
     display: flex;
@@ -72,14 +80,23 @@ body{
     align-items: center;
     position: relative;
 }
+
+.hero-text--component {
+    position: relative;
+    right: 10%;
+    top: -10%;
+}
+
 .hero-title{
-    font-family: 'Comfortaa', cursive;
-    color: var(--strong-green);
-    -webkit-text-stroke: 2px var(--black);
-    font-weight: 700;
-    font-size: 5vw;
-    position: absolute;
-    top: 4rem;
+    color: white;
+    font-family: 'Belleza', sans-serif;
+    font-size: 10rem;
+}
+
+.hero-subtitle {
+    color: white;
+    font-family: 'Belleza', sans-serif;
+    font-size: 3rem;
 }
 
 .slide-container {
@@ -132,6 +149,11 @@ p {
     border: none;
     border-radius: 0;
     height: 100%;
+}
+
+.logo-desktop {
+    margin: 3%;
+    width: 10%;
 }
 
 .link {
@@ -384,6 +406,22 @@ p {
     place-items: center;
 }
 
+/* Testimonials section */
+
+#testimonials {
+    margin: 3% 5%;
+}
+
+.card-img-top {
+    width: 100%;
+    height: 15rem;
+    border-radius: 10%;
+}
+
+.card {
+    margin: 0 5%;
+}
+
 /* EXTRAS SECTION */
 
 .extras {
@@ -448,6 +486,25 @@ p {
         text-decoration: none;
         margin-right: 1rem;
     }
+
+    .hero-text--component {
+        position: initial;
+        margin: 0 auto;
+        text-align: center;
+    }
+
+    .hero-title {
+        font-size: 5rem;
+
+        transition: all .2s ease;
+    }
+
+    .hero-subtitle {
+        font-size: 2rem;
+        transition: all .2s ease;
+    }
+
+
     .bars i{
         font-size: 3rem;
         color: var(--black);
@@ -497,8 +554,8 @@ p {
     }
     .logo-mobile{
         display: inline;
-        width: 4rem;
-        margin: .5rem;
+        width: 10%;
+        margin: 3%;
     }
     .main-info{
         grid-template-columns: auto;
@@ -510,6 +567,19 @@ p {
     .sub-info{
         grid-template-columns: auto auto auto;
     }
+
+    .city-text {
+        font-size: 100%;
+
+        transition: all .4s ease;
+    }
+
+    .reserv-btn {
+        font-size: 50%;
+        text-align: center;
+        width: 80%;
+    }
+
     .amount{
         padding: 0 5%;
         margin-bottom: 10%;
