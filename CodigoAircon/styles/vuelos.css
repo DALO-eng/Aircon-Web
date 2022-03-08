@@ -531,3 +531,10 @@ p {
     }
 
 }
+
+/* Map section */
+
+#map {
+    height: 500px;
+    width: 100%;
+}

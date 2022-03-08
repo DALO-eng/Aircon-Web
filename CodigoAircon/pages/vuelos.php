@@ -29,6 +29,8 @@
     <script src="../Aircon-Web-master/CodigoAircon/assests/scripts/validate-alert.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
 
+    <script src="../assets/scripts/googleMaps.js"></script>
+
 </head>
 <body>
     <main>
@@ -61,9 +63,7 @@
                             <div class="main-info-element">
                                 <label for="from">Desde:</label>
                                 <select name="from" id="from">
-                                    <option value="prueba1">prueba1</option>
-                                    <option value="prueba2">prueba2</option>
-                                    <option value="prueba3">prueba3</option>
+                                    <option value="prueba1"></option>
                                 </select>
                             </div>
                             <div class="main-info-element">
@@ -191,6 +191,13 @@
                   </div>
             </div>
         </section>
+        <div id="map"></div>
+
+    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
+      async
+    ></script>
     </main>
 </body>
 </html>
