@@ -23,8 +23,8 @@
         }
     ?>
     <main class="container">
-        <img src="https://drive.google.com/uc?id=141ILhH9N3xMNjuAF99kE5zmWdIWCKrGc" alt="aircon-logo-mobile" class="logo-mobile">
-        <img src="https://drive.google.com/uc?id=1lhOMQhpKRsGt7GNtbPBS9iV1bNS9T5Hs" alt="aircon-logo-desktop" class="logo-desktop">
+        <img src="../../datosAircon/logo.png" alt="aircon-logo-mobile" class="logo-mobile">
+        <img src="../../datosAircon/logo-horizontal.png" alt="aircon-logo-desktop" class="logo-desktop">
         <h2 class="title">Regístrate</h2>
         <form action="../assets/php/register.php" method="post">
             <input type="text" placeholder="Nombre" name="name" required>
