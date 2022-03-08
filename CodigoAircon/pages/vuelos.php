@@ -62,17 +62,11 @@
                         <div class="main-info">
                             <div class="main-info-element">
                                 <label for="from">Desde:</label>
-                                <select name="from" id="from">
-                                    <option value="prueba1"></option>
-                                </select>
+                                <a href="../pages/mapa.php"> Ver mapa </a>
                             </div>
                             <div class="main-info-element">
                                 <label for="to">Hasta:</label>
-                                <select name="to" id="to">
-                                    <option value="prueba1">prueba1</option>
-                                    <option value="prueba2">prueba2</option>
-                                    <option value="prueba3">prueba3</option>
-                                </select>
+                                <a href="../pages/mapa.php"> Ver mapa </a>
                             </div>
                             <div class="main-info-element">
                                 <label for="date-arrive">Salida:</label>
@@ -191,13 +185,6 @@
                   </div>
             </div>
         </section>
-        <div id="map"></div>
-
-    <!-- Async script executes immediately and must be after any DOM elements used in callback. -->
-    <script
-      src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap&libraries=&v=weekly"
-      async
-    ></script>
     </main>
 </body>
 </html>
