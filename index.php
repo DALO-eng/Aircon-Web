@@ -49,10 +49,10 @@
                         <img src="./datosAircon/logo-horizontal.png" alt="aircon-logo-desktop" class="logo-desktop">
                         <a class="bars" id="toggle-button" href="#"><i class="fas fa-bars"></i></a>
                         <ul class="navbar-options">
-                            <li><a href="#">Oferta de vuelos</a></li>
+                            <li><a href="CodigoAircon/pages/vuelos.php">Oferta de vuelos</a></li>
                             <li><a href="#">Mis Viajes</a></li>
-                            <li><a href="./CodigoAircon/pages/Cali.html" >Encuestas</a></li>
-                            <li><a href="#">Ayuda</a></li>
+                            <li><a href="./CodigoAircon/pages/Cali.php">Encuestas</a></li>
+                            <li><a href="#main-footer">Contactanos</a></li>
                             <li><a href="./CodigoAircon/pages/loginPage.php"><?php echo $mainValue;?></a></li>
                         </ul>
                 </nav>
@@ -139,7 +139,7 @@
 
     </main>
     <footer>
-        <div class="main-footer">
+        <div id="main-footer">
             <div class="contact">
                 <span>Contactenos</span>
                 <ul>

@@ -265,7 +265,7 @@ p {
     width: 100%;
 }
 
-.main-footer{
+#main-footer{
     display: flex;
     justify-content: space-between;
     align-items: center;
