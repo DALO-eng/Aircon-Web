@@ -103,7 +103,8 @@
        } /*else {
             $('#availabilty').html('<span class="text-success"><i class="fas fa-check-circle"></i> El correo no es valido </span>');
             $('#vuelo').attr('disabled', false)
-        }  */else {
+        }  */
+        else {
             $.ajax({
                 url: '../assests/php/CaliVerif.php',
                 method: "POST",
